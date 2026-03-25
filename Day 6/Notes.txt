@@ -1,0 +1,12 @@
+Notes:
+  OOPs
+    |-classes
+    |   |-Collections of methods and variables
+    |   |_class is nothing but a blueprint of a objects and instances
+    |
+    |-objects
+        |-
+  
+  
+  
+Task:
