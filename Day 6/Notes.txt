@@ -75,3 +75,144 @@ Default Constructor
 │
 └─ Uses
       └─ Useful when objects must be created without providing initial values.      
+
+Parameterized Constructor
+│
+├─ What is it?
+│    └─ A special constructor that takes **one or more arguments/parameters** to initialize object state. :contentReference[oaicite:0]{index=0}
+│
+├─ Syntax
+│    └─ `ClassName(type param1, type param2, ...) { ... }` :contentReference[oaicite:1]{index=1}
+│
+├─ Purpose
+│    ├─ To initialize object with **specific values** at the time of creation. :contentReference[oaicite:2]{index=2}
+│    └─ Allows objects to start with different states. :contentReference[oaicite:3]{index=3}
+│
+├─ How to Use
+│    ├─ When creating an object:
+│    │     `MyClass obj = new MyClass(value1, value2);`
+│    └─ The values are passed into the constructor parameters. :contentReference[oaicite:4]{index=4}
+│
+└─ Example in Code
+      ```
+      class Student {
+          String name;
+          int age;
+
+          // parameterized constructor
+          Student(String name, int age) {
+              this.name = name;
+              this.age = age;
+          }
+      }
+
+      public static void main(String[] args) {
+          Student s1 = new Student("John", 20);
+      }
+      ```
+
+Memory Allocation in Java
+│
+├─ Two Main Areas
+│    ├─ Stack Memory
+│    └─ Heap Memory
+│
+├─ Stack Memory
+│    ├─ Used for local variables, method parameters, and references. :contentReference[oaicite:5]{index=5}
+│    ├─ Managed automatically when methods are called. :contentReference[oaicite:6]{index=6}
+│    ├─ Faster than heap memory. :contentReference[oaicite:7]{index=7}
+│    └─ Each thread has its own stack. :contentReference[oaicite:8]{index=8}
+│
+├─ Heap Memory
+│    ├─ Used to store **objects and instance variables** created with `new`. :contentReference[oaicite:9]{index=9}
+│    ├─ Managed by Garbage Collector. :contentReference[oaicite:10]{index=10}
+│    └─ Shared across all threads. :contentReference[oaicite:11]{index=11}
+│
+├─ Stack vs Heap (Key Differences)
+│    ├─ Stack: stores local primitives & references to objects. :contentReference[oaicite:12]{index=12}
+│    ├─ Heap: stores the **objects themselves**. :contentReference[oaicite:13]{index=13}
+│    ├─ Stack memory is automatically freed when a method ends. :contentReference[oaicite:14]{index=14}
+│    └─ Heap memory is freed when objects are no longer used (GC). :contentReference[oaicite:15]{index=15}
+│
+└─ Object Creation Memory Flow
+      ```
+      MyClass obj = new MyClass();
+      ```
+      ├─ `new MyClass()` allocates memory for the object in **heap**. :contentReference[oaicite:16]{index=16}
+      ├─ Variables inside object get default values first. :contentReference[oaicite:17]{index=17}
+      ├─ Then the constructor runs to set initial values. :contentReference[oaicite:18]{index=18}
+      └─ Reference (`obj`) is stored in **stack**. :contentReference[oaicite:19]{index=19}            
+
+Object Creation Flow
+│
+├─ 1. Class Loader Loads the Class
+│     ├─ JVM checks if the class’s bytecode is already loaded
+│     ├─ If not, ClassLoader loads the class *into JVM memory*
+│     ├─ Class metadata (methods, fields, structure) is stored
+│     │     in Method Area / Metaspace (not stack or heap) :contentReference[oaicite:0]{index=0}
+│     └─ After loading, JVM knows how big objects of this class should be
+│
+├─ 2. Memory Allocation for Object (`new`)
+│     ├─ `new dpConstructor()` tells JVM to create an object
+│     ├─ JVM allocates space for the object **in the heap memory** :contentReference[oaicite:1]{index=1}
+│     ├─ All the instance variables of the object are reserved space here :contentReference[oaicite:2]{index=2}
+│     └─ Heap memory stays until object is no longer referenced and garbage collected :contentReference[oaicite:3]{index=3}
+│
+├─ 3. Constructor Call (Initialization)
+│     ├─ After memory is reserved in heap, JVM calls the constructor
+│     ├─ Default or parameterized constructor runs
+│     ├─ Constructor parameters and local variables are stored in stack memory :contentReference[oaicite:4]{index=4}
+│     ├─ Constructor initializes the object’s fields (in heap)
+│     └─ Then control returns back to calling method
+│
+└─ 4. Reference in Stack
+      ├─ The reference variable (like `dpRef`) that points to the object
+      │     is stored in **stack memory** :contentReference[oaicite:5]{index=5}
+      └─ So:
+            - `dpRef` is in **stack**
+            - Object itself is in **heap**
+
+Stack Memory
+│
+├─ Stores:
+│     ├─ Method call frames
+│     ├─ Local variables
+│     └─ Object references (but NOT the object itself) :contentReference[oaicite:6]{index=6}
+│
+├─ Fast access memory
+└─ Memory cleared when method ends
+
+Heap Memory
+│
+├─ Stores:
+│     ├─ Objects created with `new` :contentReference[oaicite:7]{index=7}
+│     └─ Their instance variables
+│
+├─ Larger memory area
+├─ Shared across threads
+└─ Garbage Collector reclaims unused objects                  
+
+Pillars of OOP
+│
+├─ 1. Encapsulation
+│     ├─ Means hiding internal data and exposing only what’s necessary
+│     ├─ Bundles data (variables) and methods (functions) together in a class
+│     ├─ Uses access modifiers (private, public) to protect data
+│     └─ Helps secure and organize code so it’s easier to maintain :contentReference[oaicite:1]{index=1}
+│
+├─ 2. Abstraction
+│     ├─ Means showing only relevant details to the user
+│     ├─ Hides unnecessary implementation complexity
+│     └─ Achieved via abstract classes and interfaces :contentReference[oaicite:2]{index=2}
+│
+├─ 3. Inheritance
+│     ├─ Allows one class to reuse another class’s data and behavior
+│     ├─ Creates a parent–child relationship between classes
+│     └─ Helps reduce code duplication and makes code reusable :contentReference[oaicite:3]{index=3}
+│
+└─ 4. Polymorphism
+      ├─ Means “many forms”
+      ├─ Lets the same method work differently in different classes
+      │     ├─ Compile‑time polymorphism (method overloading)
+      │     └─ Run‑time polymorphism (method overriding)
+      └─ Makes code flexible by letting objects behave differently depending on context :contentReference[oaicite:4]{index=4}
