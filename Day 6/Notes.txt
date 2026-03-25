@@ -1,12 +1,77 @@
-Notes:
-  OOPs
-    |-classes
-    |   |-Collections of methods and variables
-    |   |_class is nothing but a blueprint of a objects and instances
-    |
-    |-objects
-        |-
-  
-  
-  
-Task:
+OOPs
+│
+├── Definition
+│     └─ A programming model that organizes code around **objects** and **classes** rather than just procedures or logic. It makes programs easier to reuse, maintain, and scale. :contentReference[oaicite:0]{index=0}
+│
+├── Core Concepts
+│     ├─ Class
+│     ├─ Object
+│     ├─ Encapsulation
+│     ├─ Inheritance
+│     ├─ Polymorphism
+│     └─ Abstraction :contentReference[oaicite:1]{index=1}
+│
+└── Features
+      └─ Helps bind data and related behavior together inside objects. :contentReference[oaicite:2]{index=2}
+
+Classes
+│
+├─ What is a Class?
+│     └─ A **blueprint or prototype** for objects; defines properties (variables) and behaviors (methods). :contentReference[oaicite:3]{index=3}
+│
+├─ Purpose
+│     └─ To organize related data and code together so multiple objects can be created with the same structure. :contentReference[oaicite:4]{index=4}
+│
+└─ Characteristics
+      ├─ Contains methods and variables.
+      ├─ Used to create objects.
+      └─ Each class usually compiles into its own `.class` file.
+
+Objects
+│
+├─ Definition
+│     └─ An **instance of a class**. When you create an object, you create a real working entity based on the class blueprint. :contentReference[oaicite:5]{index=5}
+│
+├─ Example
+│     └─ If `Car` is a class, then `myCar` is an object of that class.
+│
+└─ Notes
+      ├─ Objects **store data** and allow accessing class methods.
+      └─ You can create **multiple objects** from the same class.
+
+Constructor
+│
+├─ What is it?
+│     └─ A **special block of code** that runs when an object is created. :contentReference[oaicite:6]{index=6}
+│
+├─ Rules
+│     ├─ Same name as the class.
+│     ├─ No return type (not even void).
+│     └─ Automatically called when object is created with `new`. :contentReference[oaicite:7]{index=7}
+│
+├─ Types
+│     ├─ **Default Constructor**
+│     │      └─ Provided by Java when you *don’t write any constructor* yourself. :contentReference[oaicite:8]{index=8}
+│     │
+│     ├─ **No‑Arg Constructor**
+│     │      └─ A constructor written with no parameters by the programmer. :contentReference[oaicite:9]{index=9}
+│     │
+│     └─ **Parameterized Constructor**
+│            └─ A constructor that accepts parameters so objects can be initialized with specific values. :contentReference[oaicite:10]{index=10}
+│
+└─ Purpose
+      └─ To **initialize object state** before it’s used. :contentReference[oaicite:11]{index=11}            
+
+Default Constructor
+│
+├─ When is it created?
+│     └─ Java compiler automatically provides it if you don’t define any constructors in the class. :contentReference[oaicite:12]{index=12}
+│
+├─ Characteristics
+│     ├─ No parameters.
+│     ├─ Same name as the class.
+│     ├─ Initializes object with **default values** (e.g., ints to 0, objects to null). :contentReference[oaicite:13]{index=13}
+│     └─ Only provided when *no user‑defined constructor* exists. :contentReference[oaicite:14]{index=14}
+│
+└─ Uses
+      └─ Useful when objects must be created without providing initial values.      
