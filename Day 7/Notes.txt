@@ -1,0 +1,129 @@
+Java Inheritance — Complete Notes
+
+├── 1. Definition
+│   ├── Inheritance is a mechanism where a class (subclass/child) acquires
+│   │   properties (fields) and behaviors (methods) from another class
+│   │   (superclass/parent). 
+│   ├── It promotes code reuse, logical structure, and hierarchical design. 
+│   ├── Implemented using the `extends` keyword in Java. 
+│   └── Represents an “IS‑A” relationship (e.g., Dog IS‑A Animal). 
+│
+├── 2. Key Terminology
+│   ├── Superclass / Parent Class — class being inherited from. 
+│   ├── Subclass / Child Class — class that inherits features. 
+│   ├── `extends` — declares a subclass relationship. 
+│   └── `super` — refers to parent class members; used for accessing parent
+│       methods or calling parent constructors. 
+│
+├── 3. Why Use Inheritance?
+│   ├── Code Reusability — avoids rewriting common logic. 
+│   ├── Easier maintenance — changes in parent automatically applied
+│   │   to children. 
+│   ├── Supports polymorphism (objects behave differently at runtime). 
+│   ├── Enables hierarchical class design. 
+│   └── Clarifies logical relationships (natural modeling). 
+│
+├── 4. Types of Inheritance
+│   ├── Single Inheritance
+│   │   ├── One child inherits from one parent
+│   │   └── Supported in Java. 
+│   │
+│   ├── Multilevel Inheritance
+│   │   ├── A → B → C chain
+│   │   └── Supported in Java. 
+│   │
+│   ├── Hierarchical Inheritance
+│   │   ├── One parent → many children
+│   │   └── Supported in Java. 
+│   │
+│   ├── Multiple Inheritance (Classes)
+│   │   ├── One child inherits from multiple parents
+│   │   └── Not supported for classes in Java (avoids ambiguity). 
+│   │
+│   └── Hybrid Inheritance
+│       ├── Combined patterns (multiple + multilevel + hierarchical)
+│       └── Not supported directly with classes; achievable via
+│           interfaces instead. 
+│
+├── 5. How Inheritance Works
+│   ├── Subclass automatically acquires non‑private fields & methods. 
+│   ├── Parent class must exist and be compiled before the child. 
+│   └── Subclass can override parent methods or add its own. 
+│
+├── 6. Method Overriding (Runtime Polymorphism)
+│   ├── Occurs when a child method has the same signature as a parent. 
+│   ├── JVM decides which overridden version executes at runtime,
+│   │   not compile time (dynamic binding). 
+│   ├── Rules for Valid Overriding
+│   │   ├── Same method name, parameters, and compatible return type. 
+│   │   ├── Access level in child must be equal or more accessible than parent. 
+│   │   ├── `@Override` annotation helps catch mistakes at compile time. 
+│   │   └── `final` methods cannot be overridden. 
+│   └── Static methods are not overridden — they are *hidden* (method hiding). 
+│
+├── 7. Polymorphism & Dynamic Method Dispatch
+│   ├── JVM chooses which overridden method to call based on actual
+│   │   object type at runtime. 
+│   ├── Superclass reference referring to subclass object enables this. 
+│   ├── This makes code flexible and extensible (one interface, many behaviors). 
+│   └── Example:
+│       ```
+│       Animal a = new Dog();
+│       a.sound(); // Dog’s overridden method executes
+│       ```
+│       (Dog overrides sound()). 
+│
+├── 8. Constructors & Inheritance
+│   ├── Constructors are not inherited directly. 
+│   ├── `super()` calls the parent constructor first. 
+│   └── If not provided explicitly, Java inserts a default `super()` call. 
+│
+├── 9. Access Modifiers & Inheritance
+│   ├── `private` — not inherited directly (accessible via getters/setters). 
+│   ├── `protected` — accessible in subclass & same package. 
+│   └── `public` — accessible everywhere. 
+│
+├── 10. Practical Code Examples
+│   ├── Simple Inheritance Example
+│   │   ```
+│   │   class Animal { void eat() { System.out.println("Animal eats"); }}
+│   │   class Dog extends Animal { void bark() { System.out.println("Dog barks"); }}
+│   │   Dog d = new Dog(); d.eat(); // Inherited
+│   │   ``` 
+│   │
+│   ├── Method Overriding Example
+│   │   ```
+│   │   class Animal { void sound() { System.out.println("Generic"); }}
+│   │   class Cat extends Animal { @Override void sound() { System.out.println("Meow"); }}
+│   │   Animal a = new Cat(); a.sound(); // Meow
+│   │   ``` 
+│   │
+│   ├── Polymorphic Array Example
+│   │   ```
+│   │   Animal[] arr = {new Dog(), new Cat()};
+│   │   for (Animal a : arr) { a.sound(); }
+│   │   ``` 
+│   │
+│   └── Method Hiding Example
+│       ```
+│       class A { static void show() { … }}
+│       class B extends A { static void show() { … }}
+│       A obj = new B(); obj.show(); // Calls A.show()
+│       ``` 
+
+│
+├── 11. Advantages of Inheritance
+│   ├── Promotes code reuse and reduces duplication. 
+│   ├── Enables polymorphic behavior. 
+│   └── Simplifies object‑oriented design. 
+│
+├── 12. Common Pitfalls
+│   ├── Deep inheritance chains can be hard to maintain. 
+│   ├── Static methods are *not* polymorphic. 
+│   ├── Overriding private methods is not possible (they are not visible). 
+│   └── Confusing method hiding with overriding if static involved. 
+│
+└── 13. Summary
+    ├── Inheritance promotes reusable and extensible design. 
+    ├── Overriding enables runtime polymorphism via dynamic dispatch. 
+    └── Use inheritance wisely according to logical design principles. 
