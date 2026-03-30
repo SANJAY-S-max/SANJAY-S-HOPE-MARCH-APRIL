@@ -1,0 +1,266 @@
+Encapsulation
+├── Definition
+│   └── Encapsulation is an OOP concept that wraps data (variables) and 
+│       methods that operate on the data into a single unit (class) and 
+│       restricts direct access using access modifiers.
+│
+├── Purpose
+│   ├── Protect internal object data
+│   ├── Maintain control over data access and modification
+│   └── Improve code maintainability and security
+│
+├── Access Modifiers
+│   ├── private – accessible only within the class
+│   ├── public – accessible from anywhere
+│   ├── protected – accessible within package and subclasses
+│   └── default (no modifier) – accessible within the package
+│
+├── Syntax
+│   └── Use private variables + public getter/setter methods
+│
+├── Example Code
+│   ```
+│   class Student {
+│       private String name;
+│       private int age;
+│
+│       public String getName() { return name; }
+│       public void setName(String name) { this.name = name; }
+│       public int getAge() { return age; }
+│       public void setAge(int age) { this.age = age; }
+│   }
+│
+│   public class Main {
+│       public static void main(String[] args) {
+│           Student s = new Student();
+│           s.setName("Arun");
+│           s.setAge(20);
+│           System.out.println(s.getName() + " – " + s.getAge());
+│       }
+│   }
+│   ```
+│
+├── Key Points
+│   ├── Variables are private
+│   ├── Access through public getter/setter
+│   ├── Data hiding is enforced
+│   └── Enhances security and control
+│
+├── Advantages
+│   ├── Data security and integrity
+│   ├── Flexibility to change internal implementation
+│   ├── Easy to maintain and debug
+│
+├── Setter and Getter Methods
+│   ├── Getter: reads variable value
+│   └── Setter: modifies variable value (can include validation)
+│
+├── Immutable Classes
+│   ├── No setters provided
+│   ├── Object state cannot change after creation
+│   └── Example: `String` class in Java
+│
+├── Real-Life Example
+│   └── ATM machine: You cannot directly access bank balance; only 
+│       deposit/withdraw methods are available
+│
+├── Common Mistakes
+│   ├── Making variables public (breaks encapsulation)
+│   ├── Not validating data in setters
+│   └── Exposing internal mutable objects directly
+│
+└── Summary
+    └── Encapsulation bundles data and methods together, hides internal 
+        details, and allows controlled access through methods to improve 
+        code safety and readability.
+
+Polymorphism
+├── Definition
+│   └── Polymorphism means "many forms" — the ability of an object to take 
+│       multiple forms and execute the same method differently depending 
+│       on the context.
+│
+├── Purpose
+│   ├── Write flexible and reusable code
+│   ├── Use the same method name for different behaviors
+│   └── Decouple implementation from usage
+│
+├── Types
+│   ├── Compile-Time Polymorphism
+│   │   ├── Method Overloading – same method name, different parameters
+│   │   └── Constructor Overloading – same constructor name, different arguments
+│   └── Run-Time Polymorphism
+│       ├── Method Overriding – subclass provides its own implementation
+│       └── Interface Implementation – different classes implement same interface method
+│
+├── Syntax
+│   ├── Overloading:
+│   │   void display(int a) {}
+│   │   void display(int a, int b) {}
+│   └── Overriding:
+│       class A { void show() {} }
+│       class B extends A { void show() {} }
+│
+├── Example Code
+│   ├── // Method Overloading
+│   │   class MathUtil {
+│   │       int add(int a, int b) { return a + b; }
+│   │       int add(int a, int b, int c) { return a + b + c; }
+│   │   }
+│   │
+│   ├── // Constructor Overloading
+│   │   class Box {
+│   │       int width, height;
+│   │       Box() { width = height = 0; }
+│   │       Box(int w, int h) { width = w; height = h; }
+│   │   }
+│   │
+│   └── // Method Overriding
+│       class Animal { void sound() { System.out.println("Animal sound"); } }
+│       class Dog extends Animal { void sound() { System.out.println("Dog barks"); } }
+│
+│       public class Main {
+│           public static void main(String[] args) {
+│               Animal a = new Dog();
+│               a.sound(); // prints "Dog barks"
+│           }
+│       }
+│
+├── Key Points
+│   ├── Same method name, different behavior
+│   ├── Overloading → compile-time decision
+│   ├── Overriding → runtime decision
+│   ├── Inheritance is required for overriding
+│   └── @Override annotation helps clarity
+│
+├── Advantages
+│   ├── Code reusability
+│   ├── Flexibility in design
+│   ├── Improves readability and maintenance
+│
+├── Extra Knowledge
+│   ├── Compile-time polymorphism uses static binding
+│   ├── Run-time polymorphism uses dynamic binding
+│   ├── Often combined with interfaces for flexible OOP design
+│
+├── Real-Life Example
+│   └── A person can be a student, teacher, or employee — same entity, different roles
+│
+├── Common Mistakes
+│   ├── Confusing overloading with overriding
+│   ├── Forgetting inheritance for overriding
+│   └── Using incorrect method signatures
+│
+└── Summary
+    └── Polymorphism allows one interface to have multiple implementations, 
+        enabling flexible and reusable code in object-oriented programming.
+
+
+Method Overloading
+├── Definition
+│   └── Method Overloading is a compile-time polymorphism technique
+│       in Java where two or more methods in the same class have the
+│       same name but different parameter lists (type or number).
+│
+├── Syntax
+│   └── void methodName(int a) {}
+│       void methodName(int a, int b) {}
+│       int methodName(double a) {}
+│
+├── Example Code
+│   ```
+│   class Calculator {
+│       int add(int a, int b) {
+│           return a + b;
+│       }
+│       int add(int a, int b, int c) {
+│           return a + b + c;
+│       }
+│       double add(double a, double b) {
+│           return a + b;
+│       }
+│   }
+│
+│   public class Main {
+│       public static void main(String[] args) {
+│           Calculator calc = new Calculator();
+│           System.out.println(calc.add(2, 3));      // 5
+│           System.out.println(calc.add(2, 3, 4));   // 9
+│           System.out.println(calc.add(2.5, 3.5));  // 6.0
+│       }
+│   }
+│   ```
+│
+├── Key Points
+│   ├── Same method name, different parameter list
+│   ├── Return type can be same or different
+│   ├── Compile-time (static) polymorphism
+│   └── Overloading does not require inheritance
+│
+├── Advantages
+│   ├── Improves code readability
+│   ├── Reusability of method names
+│   └── Avoids cluttered method names
+│
+├── Common Mistakes
+│   ├── Changing only return type (not valid)
+│   ├── Using same parameters in same order
+│   └── Overloading with only different access modifiers
+│
+└── Summary
+    └── Method Overloading allows one method to perform multiple behaviors
+        with different parameters, improving readability and flexibility.
+
+Method Overriding
+├── Definition
+│   └── Method Overriding is a runtime polymorphism technique in Java
+│       where a subclass provides its own implementation of a method
+│       defined in the parent class with the same signature.
+│
+├── Syntax
+│   └── class Parent { void display() {} }
+│       class Child extends Parent { @Override void display() {} }
+│
+├── Example Code
+│   ```
+│   class Animal {
+│       void sound() {
+│           System.out.println("Animal makes sound");
+│       }
+│   }
+│
+│   class Dog extends Animal {
+│       @Override
+│       void sound() {
+│           System.out.println("Dog barks");
+│       }
+│   }
+│
+│   public class Main {
+│       public static void main(String[] args) {
+│           Animal a = new Dog();
+│           a.sound(); // prints "Dog barks"
+│       }
+│   }
+│   ```
+│
+├── Key Points
+│   ├── Same method signature in parent and child
+│   ├── Only applies to inheritance
+│   ├── Return type can be covariant
+│   ├── Runtime (dynamic) polymorphism
+│   └── Use `@Override` annotation to avoid mistakes
+│
+├── Advantages
+│   ├── Achieves runtime polymorphism
+│   ├── Supports dynamic method invocation
+│   ├── Improves flexibility and maintainability
+│
+├── Common Mistakes
+│   ├── Changing parameters (creates overload, not override)
+│   ├── Forgetting inheritance
+│   └── Incorrect return type (non-covariant)
+│
+└── Summary
+    └── Method Overriding allows a subclass to redefine a parent method,
+        enabling flexible behavior at runtime and supporting polymorphism.
