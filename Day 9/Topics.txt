@@ -1,0 +1,44 @@
+ABSTRACTION & PARTIAL IMPLEMENTATION
+
+Understanding Abstraction
+- Abstraction is the concept of hiding implementation details and showing only essential features.
+- It helps reduce complexity and improves code maintainability.
+
+Abstract Classes
+- An abstract class is a class that cannot be instantiated.
+- It is used as a base class for other classes.
+
+Types of Methods in Abstract Classes
+- Abstract methods: Declared without implementation and must be implemented by subclasses.
+- Concrete methods: Have a complete implementation and can be used directly.
+
+Use Cases of Abstraction
+- When defining a common interface for related classes.
+- When some methods share implementation while others differ.
+- Useful in large-scale applications for flexibility and better design.
+
+Design-Oriented Example
+- Example: Vehicle abstract class
+  - Abstract method: startEngine()
+  - Concrete method: fuelType()
+  - Subclasses like Car and Bike implement their own engine-start logic.
+
+
+INTERFACES & OBJECT RELATIONSHIPS
+
+Introduction to Interfaces
+- An interface defines a contract that classes must follow.
+- It contains method declarations without implementation.
+
+Achieving Full Abstraction
+- Interfaces provide full abstraction.
+- They define what to do, not how to do it.
+
+Multiple Inheritance Using Interfaces
+- A class can implement multiple interfaces.
+- This allows multiple inheritance in languages like Java.
+
+Solving the Diamond Problem
+- The diamond problem occurs due to ambiguity in multiple inheritance.
+- Interfaces solve this by requiring explicit implementation.
+- Modern languages (like Java) use default method rules to resolve conflicts.

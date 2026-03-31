@@ -1,0 +1,95 @@
+📁 Java Notes
+│
+└── 📁 Abstract
+    │
+    ├── 📄 1-Definition.md
+    │   └─ Explains what abstract classes and abstract methods are in Java, including key concepts and use cases.
+    │
+    ├── 📄 2-Purpose.md
+    │   └─ Why abstraction is important, benefits in OOP, and when to use abstract classes.
+    │
+    ├── 📄 3-Syntax.md
+    │   └─ Syntax for abstract class declaration:
+    │       └─ abstract class ClassName { … }
+    │       └─ abstract returnType methodName(parameters);
+    │       └─ Rules for abstract methods and classes
+    │
+    ├── 📁 4-Examples
+    │   ├── 📄 Example1_BasicAbstractClass.java
+    │   │   └─ Basic abstract class with a single abstract method and subclass implementation
+    │   │
+    │   ├── 📄 Example2_AbstractWithConcreteMethod.java
+    │   │   └─ Abstract class containing both abstract and concrete methods
+    │   │
+    │   └── 📄 Example3_AbstractConstructor.java
+    │       └─ Demonstrates using constructors in abstract classes
+    │
+    ├── 📄 5-Advantages.md
+    │   └─ Lists benefits like code reuse, enforcing a contract, polymorphism, and structured design
+    │
+    ├── 📄 6-Disadvantages.md
+    │   └─ Lists limitations such as cannot instantiate abstract classes, increased complexity, and design overhead
+    │
+    ├── 📄 7-Rules.md
+    │   └─ Key rules for abstract classes and methods:
+    │       └─ Abstract classes cannot be instantiated
+    │       └─ Abstract methods must be overridden
+    │       └─ Cannot combine with final, static, or private keywords
+    │
+    ├── 📄 8-BestPractices.md
+    │   └─ Guidelines for choosing abstract classes vs interfaces vs regular classes
+    │
+    ├── 📄 9-CommonErrors.md
+    │   └─ Typical mistakes like instantiating abstract classes or missing implementation of abstract methods
+    │
+    └── 📄 10-FAQs.md
+        └─ Frequently asked questions about abstract classes and methods, useful for interviews or exams
+Java Notes
+│
+└── Interfaces_and_Implements
+    │
+    ├── Interface
+    │   ├── 1-Definition.md
+    │   │   └─ What an interface is, abstraction, and behavior contracts in Java.
+    │   ├── 2-Syntax.md
+    │   │   └─ Interface declaration, method signatures, default/static methods.
+    │   ├── 3-Properties.md
+    │   │   └─ Methods are public abstract, constants, no constructors, default/static/private methods.
+    │   ├── Examples
+    │   │   ├── Example1_BasicInterface.java
+    │   │   │   └─ Basic interface with one abstract method.
+    │   │   └── Example2_InterfaceWithDefaultAndStatic.java
+    │   │       └─ Interface with default and static methods.
+    │   ├── 4-UseCases.md
+    │   │   └─ When to use interfaces (multiple inheritance, behavior contracts).
+    │   ├── 5-Advantages.md
+    │   │   └─ Benefits: multiple inheritance, polymorphism, loose coupling, code reuse.
+    │   ├── 6-Limitations.md
+    │   │   └─ Limitations: no instance variables, no constructors, cannot instantiate.
+    │   ├── 7-CommonErrors.md
+    │   │   └─ Mistakes: missing overrides, misusing default/static methods.
+    │   └── 8-FAQs.md
+    │       └─ Quick interface questions for study.
+    │
+    ├── Implements
+    │   ├── 1-Definition.md
+    │   │   └─ Meaning of `implements` keyword and class adherence to interface contract.
+    │   ├── 2-Syntax.md
+    │   │   └─ class MyClass implements MyInterface { … } and multiple interfaces syntax.
+    │   ├── Examples
+    │   │   ├── Example1_SingleInterfaceImpl.java
+    │   │   │   └─ Class implementing a single interface.
+    │   │   └── Example2_MultipleInterfacesImpl.java
+    │   │       └─ Class implementing multiple interfaces.
+    │   ├── 3-Notes.md
+    │   │   └─ How multiple interfaces work, abstract class interactions.
+    │   └── 4-CommonErrors.md
+    │       └─ Errors like not overriding all abstract methods or syntax issues.
+    │
+    └── Comparison_Interface_vs_Abstract
+        ├── 1-Differences.md
+        │   └─ Table comparing interface vs abstract class (methods, variables, constructors, inheritance).
+        ├── 2-WhenToUse.md
+        │   └─ Guidelines for choosing interface or abstract class.
+        └── 3-ExamplesSideBySide.java
+            └─ Code demonstrating interface and abstract class together.

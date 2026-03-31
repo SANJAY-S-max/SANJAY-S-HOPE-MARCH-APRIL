@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class ZigZag{
+    public static String convert(String s, int numRows) {
+        if(s.length()<=numRows || numRows==1) 
+            return s;
+        StringBuilder[] sb = new StringBuilder[numRows];
+        for(int i =0;i<numRows;i++){
+            sb[i] = new StringBuilder();
+        }
+        int currRow = 0;
+        boolean flag = false;
+        for(char c:s.toCharArray()){
+            sb[currRow].append(c);
+            if(currRow==0 || currRow==numRows-1){
+                flag = !flag;
+            }
+            if(flag){
+                currRow++;
+            }else{
+                currRow--;
+            }
+        }
+        StringBuilder res = new StringBuilder();
+        for(int i=0;i<numRows;i++){
+            res.append(sb[i]);
+        }
+        return res.toString();
+
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        int nrows = sc.nextInt();
+        System.out.println(convert(str, nrows));
+    }
+}
