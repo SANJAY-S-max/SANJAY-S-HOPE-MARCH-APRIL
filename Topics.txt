@@ -1,0 +1,57 @@
+Java Basics
+Data Types and Variables
+Operators in Java
+Control Flow Statements (if, else, switch)
+Loops (for, while, do-while)
+Methods and Functions
+OOP Concepts
+  - Classes and Objects
+  - Encapsulation
+  - Inheritance
+  - Polymorphism
+  - Abstraction
+  - Interfaces
+Constructors
+this and super keywords
+final keyword
+static keyword and members
+abstract keyword
+enum types
+Packages and Imports
+Modifiers (public, private, protected, default)
+Exception Handling
+  - try, catch, finally
+  - throw and throws
+  - Checked and Unchecked Exceptions
+  - Custom Exceptions
+Collections Framework
+  - ArrayList, LinkedList
+  - HashMap, HashSet
+  - TreeMap, TreeSet, PriorityQueue
+Generics
+Java 8 Features
+  - Lambda Expressions
+  - Streams API
+  - Functional Interfaces
+File Handling
+Serialization and Deserialization
+Multithreading
+  - Thread class and Runnable interface
+  - synchronized and volatile keywords
+  - Thread Lifecycle, join(), sleep(), wait(), notify()
+Java I/O Streams
+Networking in Java
+  - Sockets, ServerSocket
+JDBC (Java Database Connectivity)
+Annotations
+Reflection
+Inner Classes
+  - Member, Static, Local, Anonymous Inner Classes
+Java Keywords and Usage
+Advanced OOP Examples
+Best Practices and Coding Standards
+GUI Programming (Swing, AWT, JavaFX basics)
+Java Modules (Java 9+)
+Memory Management & Garbage Collection
+Java 11+ Features (var, local variable type inference, new APIs)
+Java 17+ Features (sealed classes, pattern matching)

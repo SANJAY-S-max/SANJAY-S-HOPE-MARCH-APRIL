@@ -1,0 +1,729 @@
+=========================
+JAVA OOP COMPLETE NOTES
+=========================
+
+=========================
+1️⃣ ENCAPSULATION
+=========================
+
+Definition:
+Encapsulation is the process of hiding the internal data of a class and providing controlled access using methods (getters/setters).
+
+Key Points:
+- Protects data from unauthorized access.
+- Provides maintainability.
+- Uses 'private' variables + 'public' getter/setter methods.
+
+Example:
+
+class Student {
+    private String name; // private variable
+
+    // Getter method
+    public String getName() {
+        return name;
+    }
+
+    // Setter method
+    public void setName(String newName) {
+        name = newName;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.setName("Arun");
+        System.out.println(s.getName()); // Output: Arun
+    }
+}
+
+Notes:
+- Always use private variables to hide data.
+- Use getters/setters to access or modify the data.
+
+=========================
+2️⃣ INHERITANCE
+=========================
+
+Definition:
+Inheritance allows a class (child) to acquire properties and methods from another class (parent).
+
+Key Points:
+- Uses 'extends' keyword.
+- Supports code reusability.
+- Single inheritance in Java (one parent class).
+- 'super' keyword: to access parent methods/constructors.
+
+Example:
+
+class Animal {
+    void eat() {
+        System.out.println("Animal eats");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+
+    void parentEat() {
+        super.eat(); // Access parent class method
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.bark();        // Dog barks
+        d.eat();         // Animal eats
+        d.parentEat();   // Animal eats
+    }
+}
+
+=========================
+3️⃣ POLYMORPHISM
+=========================
+
+Definition:
+Polymorphism = "many forms". Two types:
+1. Compile-time (Method Overloading)
+2. Runtime (Method Overriding)
+
+a) Method Overloading (compile-time)
+class Calculator {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+}
+
+b) Method Overriding (runtime)
+class Animal {
+    void sound() { System.out.println("Animal sound"); }
+}
+
+class Dog extends Animal {
+    void sound() { System.out.println("Dog barks"); }
+}
+
+Animal a = new Dog();
+a.sound(); // Output: Dog barks (decided at runtime)
+
+Notes:
+- Overloading = same method name, different parameters.
+- Overriding = child redefines parent method, runtime decides.
+
+=========================
+4️⃣ ABSTRACT CLASS
+=========================
+
+Definition:
+A class with abstract methods (without body) and optional normal methods. Cannot create object of abstract class.
+
+Key Points:
+- Uses 'abstract' keyword.
+- Child class must override abstract methods.
+- Can contain normal (implemented) methods.
+- Supports runtime polymorphism.
+
+Example:
+
+abstract class Animal {
+    abstract void sound(); // abstract method
+
+    void sleep() {         // normal method
+        System.out.println("Animal sleeps");
+    }
+}
+
+class Dog extends Animal {
+    void sound() { System.out.println("Dog barks"); }
+
+    void sleep() { 
+        super.sleep();    // call parent method
+        System.out.println("Dog sleeps now");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog();
+        a.sound(); // Dog barks
+        a.sleep(); // Animal sleeps
+                   // Dog sleeps now
+    }
+}
+
+Notes:
+- Abstract class can have fields, constructors, and methods.
+- Cannot instantiate abstract class directly.
+- Use 'super' to call parent class method if overridden.
+
+=========================
+5️⃣ INTERFACE
+=========================
+
+Definition:
+An interface is a contract that declares methods which must be implemented by classes.
+
+Key Points:
+- Uses 'interface' keyword.
+- Cannot instantiate interface directly.
+- Can have abstract methods, default methods (normal), and static methods.
+- Supports multiple inheritance.
+
+Example:
+
+interface Payment {
+    void pay(double amount); // abstract method
+
+    default void success() {
+        System.out.println("Payment successful");
+    }
+
+    static void info() {
+        System.out.println("Payment interface info");
+    }
+}
+
+class UpiPayment implements Payment {
+    public void pay(double amount) {
+        System.out.println("Paid " + amount + " via UPI");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Payment p = new UpiPayment();
+        p.pay(500);          // Paid 500 via UPI
+        p.success();         // Payment successful
+        Payment.info();      // Payment interface info
+    }
+}
+
+Notes:
+- Default methods can be called via object.
+- Static methods can be called via interface name.
+- Interfaces are loosely coupled.
+
+=========================
+PART 5 – JAVA EXCEPTION HANDLING
+=========================
+
+=========================
+1️⃣ WHAT IS AN EXCEPTION?
+=========================
+
+- An exception is an event that occurs during program execution that disrupts the normal flow of the program.
+- Examples: dividing by zero, null pointer access, array index out of bounds.
+
+Example:
+
+int a = 10, b = 0;
+int c = a / b; // ❌ ArithmeticException
+
+Notes:
+- Exceptions help in handling errors gracefully without crashing the program.
+
+=========================
+2️⃣ ERROR VS EXCEPTION
+=========================
+
+| Feature  | Error                       | Exception                     |
+|----------|----------------------------|--------------------------------|
+| Definition | Serious problem, cannot handle | Abnormal condition, can handle |
+| Examples | OutOfMemoryError, StackOverflowError | NullPointerException, IOException |
+| Recovery | ❌ Usually cannot recover | ✅ Can recover using try-catch |
+
+=========================
+3️⃣ KEYWORDS IN EXCEPTION HANDLING
+=========================
+
+| Keyword   | Use                                           |
+|----------|-----------------------------------------------|
+| try      | Block of code that might throw an exception |
+| catch    | Block to handle the exception               |
+| finally  | Block that always executes (optional cleanup) |
+| throw    | Used to throw an exception manually         |
+| throws   | Declares which exceptions a method might throw |
+
+=========================
+4️⃣ TYPES OF EXCEPTIONS
+=========================
+
+1. Checked Exception
+- Must be handled at compile-time.
+- Examples: IOException, SQLException
+- Compiler forces you to handle using try-catch or throws.
+
+2. Unchecked Exception (Runtime Exception)
+- Occurs at runtime.
+- Examples: ArithmeticException, NullPointerException
+- Compiler does not force handling.
+
+=========================
+5️⃣ TRY-CATCH FINALLY EXAMPLE
+=========================
+
+try {
+    int a = 10, b = 0;
+    int c = a / b;
+    System.out.println("Result: " + c);
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero");
+} finally {
+    System.out.println("This always runs");
+}
+
+Output:
+Cannot divide by zero
+This always runs
+
+Notes:
+- finally block always executes.
+- Program continues after exception handling.
+
+=========================
+6️⃣ MULTIPLE CATCH BLOCKS
+=========================
+
+try {
+    int arr[] = {1,2,3};
+    System.out.println(arr[5]);
+    int x = 10/0;
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Array index error");
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero");
+}
+
+Notes:
+- Multiple catch blocks handle different exception types.
+- Always catch **specific exceptions** first, then general ones.
+
+=========================
+7️⃣ NESTED TRY-CATCH
+=========================
+
+try {
+    int a = 10/0;
+    try {
+        int arr[] = new int[5];
+        arr[10] = 50;
+    } catch (ArrayIndexOutOfBoundsException e) {
+        System.out.println("Nested array error");
+    }
+} catch (ArithmeticException e) {
+    System.out.println("Outer arithmetic error");
+}
+
+Output:
+Outer arithmetic error
+
+Notes:
+- Inner try handles exceptions specific to inner block.
+- Outer try handles outer exceptions.
+
+=========================
+8️⃣ THROW AND THROWS
+=========================
+
+a) throw → manually throw an exception
+
+static void checkAge(int age) {
+    if(age < 18) {
+        throw new ArithmeticException("Age must be >= 18");
+    }
+    System.out.println("Age accepted");
+}
+
+b) throws → declare exception in method signature
+
+static void readFile() throws IOException {
+    FileReader fr = new FileReader("abc.txt");
+}
+
+Notes:
+- 'throw' = actual exception object.
+- 'throws' = declaration for compiler.
+
+=========================
+9️⃣ CUSTOM EXCEPTIONS
+=========================
+
+class AgeException extends Exception {
+    AgeException(String message) { super(message); }
+}
+
+static void checkAge(int age) throws AgeException {
+    if(age < 18) throw new AgeException("Age < 18 not allowed");
+}
+
+try {
+    checkAge(15);
+} catch(AgeException e) {
+    System.out.println(e.getMessage());
+}
+
+Output:
+Age < 18 not allowed
+
+Notes:
+- Extend Exception class for custom exceptions.
+- Useful for business rule validation.
+
+=========================
+10️⃣ COMMON JAVA EXCEPTIONS
+=========================
+
+| Exception                     | Example Code                           |
+|--------------------------------|--------------------------------------|
+| ArithmeticException            | int a = 10/0;                        |
+| NullPointerException           | String s = null; s.length();         |
+| ArrayIndexOutOfBoundsException | int arr[]=new int[3]; arr[5]=10;    |
+| IOException                    | FileReader fr = new FileReader("abc.txt"); |
+| NumberFormatException          | int n = Integer.parseInt("abc");     |
+
+=========================
+11️⃣ BEST PRACTICES
+=========================
+
+1. Handle specific exceptions, not generic Exception.
+2. Use finally for cleanup (close files, DB connections).
+3. Do not use exceptions for normal program flow.
+4. Log exception details: e.getMessage() or e.printStackTrace().
+5. Use custom exceptions for business rules.
+
+=========================
+PART 6 – ADVANCED JAVA CONCEPTS
+=========================
+
+=========================
+1️⃣ ANONYMOUS CLASSES
+=========================
+
+Definition:
+- A class with no name, usually used to **implement abstract classes or interfaces inline**.
+- Useful for **short-term, one-time use implementations**.
+
+Example – Anonymous Abstract Class:
+
+abstract class Animal {
+    abstract void sound();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Animal() {
+            void sound() {
+                System.out.println("Anonymous Animal sound");
+            }
+        };
+        a.sound(); // Output: Anonymous Animal sound
+    }
+}
+
+Example – Anonymous Interface:
+
+interface Payment {
+    void pay();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Payment p = new Payment() {
+            public void pay() {
+                System.out.println("Anonymous Payment done");
+            }
+        };
+        p.pay(); // Output: Anonymous Payment done
+    }
+}
+
+Notes:
+- Anonymous classes cannot have constructors.
+- Can override methods of parent abstract class or interface.
+
+=========================
+2️⃣ ABSTRACT CLASS vs INTERFACE – TIGHT vs LOOSE COUPLING
+=========================
+
+Definition:
+- Coupling = Degree of dependency between classes.
+- Tight coupling = classes highly dependent → less flexible.
+- Loose coupling = classes independent → more flexible.
+
+**Abstract Class (Tightly Coupled)**:
+- Child class depends on parent’s **implementation**.
+- Changes in abstract class can break child class.
+
+Example:
+
+abstract class BankAccount {
+    double balance;
+    BankAccount(double balance) { this.balance = balance; }
+    void deposit(double amt) { balance += amt; }
+    abstract void withdraw(double amt);
+}
+
+class SavingsAccount extends BankAccount {
+    SavingsAccount(double balance) { super(balance); }
+    void withdraw(double amt) {
+        if(amt <= balance) balance -= amt;
+        else System.out.println("Insufficient");
+    }
+}
+
+Notes:
+- SavingsAccount tightly depends on BankAccount structure.
+
+**Interface (Loosely Coupled)**:
+- Interface provides **only method signatures**.
+- Implementation details are in child class.
+- Can add new implementations without affecting existing code.
+
+Example:
+
+interface Payment {
+    void pay(double amount);
+}
+
+class CreditCard implements Payment {
+    public void pay(double amount) { System.out.println("Paid " + amount + " via Credit Card"); }
+}
+
+class UpiPayment implements Payment {
+    public void pay(double amount) { System.out.println("Paid " + amount + " via UPI"); }
+}
+
+PaymentService service = new PaymentService();
+service.processPayment(new CreditCard(), 500);
+service.processPayment(new UpiPayment(), 300);
+
+Notes:
+- PaymentService does not care about the actual implementation → loosely coupled.
+
+=========================
+3️⃣ ADVANCED EXAMPLE – COMBINED OOP + EXCEPTION HANDLING
+=========================
+
+abstract class BankAccount {
+    String name;
+    double balance;
+
+    BankAccount(String name, double balance) {
+        this.name = name;
+        this.balance = balance;
+    }
+
+    abstract void withdraw(double amount) throws Exception;
+
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println(amount + " deposited. Balance: " + balance);
+    }
+}
+
+interface Payment {
+    void pay(double amount);
+    default void success() { System.out.println("Payment success"); }
+}
+
+class CreditCard extends BankAccount implements Payment {
+    CreditCard(String name, double balance) { super(name, balance); }
+
+    public void withdraw(double amount) throws Exception {
+        if(amount <= balance) balance -= amount;
+        else throw new Exception("Insufficient funds");
+    }
+
+    public void pay(double amount) {
+        System.out.println("Paid " + amount + " via Credit Card");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        CreditCard cc = new CreditCard("Arun", 1000);
+        try {
+            cc.deposit(500);
+            cc.withdraw(300);
+            cc.pay(200);
+            cc.success();
+        } catch(Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+Output:
+500 deposited. Balance: 1500
+300 withdrawn. Balance: 1200
+Paid 200 via Credit Card
+Payment success
+
+Notes:
+- Combines abstract classes, interface, and exception handling.
+- Demonstrates real-world banking example.
+
+=========================
+4️⃣ QUICK TIPS & BEST PRACTICES
+=========================
+
+1. Prefer **interfaces** for flexibility and multiple inheritance.
+2. Use **abstract classes** when sharing common code is necessary.
+3. Always handle exceptions for **robust code**.
+4. Use **custom exceptions** for business rules.
+5. Anonymous classes are best for **short-term, one-time use**.
+6. Loose coupling improves **code maintenance** and **scalability**.
+
+=========================
+5️⃣ SUMMARY DIAGRAM (TEXTUAL)
+=========================
+
+Object-Oriented Flow:
+
+Encapsulation → Inheritance → Polymorphism → Abstract/Interface → Anonymous Classes → Exception Handling
+
+Flow:
+[Abstract/Interface] → Child Class → Methods/Overrides → Exception Handling → Runtime Flow
+
+=========================
+END OF JAVA ADVANCED NOTES
+=========================
+
+=========================
+JAVA ADVANCED CHEAT SHEET
+=========================
+
+=========================
+1️⃣ OOP CONCEPTS
+=========================
+
+🔹 Encapsulation:
+- Hide data using private variables.
+- Access via getters/setters.
+
+Example:
+class Student {
+    private String name;
+    public String getName() { return name; }
+    public void setName(String n) { name = n; }
+}
+
+🔹 Inheritance:
+- Child class acquires parent properties/methods.
+- Keyword: extends
+- 'super' to call parent constructor/method.
+
+Example:
+class Animal { void eat() { System.out.println("Animal eats"); } }
+class Dog extends Animal { void bark() { System.out.println("Dog barks"); } }
+Dog d = new Dog(); d.eat(); d.bark();
+
+🔹 Polymorphism:
+- Compile-time: Method Overloading (same name, different params)
+- Runtime: Method Overriding (child redefines parent)
+
+Example:
+Animal a = new Dog(); a.sound(); // Runtime polymorphism
+
+🔹 Abstract Class:
+- Contains abstract + normal methods.
+- Cannot create object.
+- Child must implement abstract methods.
+
+abstract class Animal { abstract void sound(); void sleep() { } }
+class Dog extends Animal { void sound() { System.out.println("Bark"); } }
+
+🔹 Interface:
+- Only method signatures + default/static methods.
+- Implements keyword.
+- Supports multiple inheritance.
+
+interface Payment { void pay(); default void success() { } static void info() { } }
+class Upi implements Payment { public void pay() { System.out.println("UPI Paid"); } }
+
+🔹 Anonymous Classes:
+- No name, inline implementation of abstract class/interface.
+
+Animal a = new Animal() { void sound() { System.out.println("Anon"); } };
+
+=========================
+2️⃣ EXCEPTION HANDLING
+=========================
+
+🔹 Exception: Runtime abnormal event (e.g., divide by zero)
+🔹 Error: Serious problem, cannot handle (OutOfMemoryError)
+
+Keywords:
+- try { } catch(Exception e) { } finally { }
+- throw → throw exception manually
+- throws → declare exception in method signature
+
+Types:
+1. Checked → must handle (IOException, SQLException)
+2. Unchecked → runtime (ArithmeticException, NullPointerException)
+
+Example – Try-Catch-Finally:
+try { int c = 10/0; } 
+catch(ArithmeticException e) { System.out.println("Error"); } 
+finally { System.out.println("Always"); }
+
+Custom Exception:
+class AgeException extends Exception { AgeException(String m) { super(m); } }
+
+Throw & Throws:
+static void checkAge(int a) throws AgeException {
+  if(a<18) throw new AgeException("Age<18");
+}
+
+=========================
+3️⃣ ABSTRACT vs INTERFACE COUPLING
+=========================
+
+- Abstract Class → Tightly Coupled (child depends on parent implementation)
+- Interface → Loosely Coupled (child depends on method signatures only)
+
+Example:
+abstract class Bank { void deposit() { } abstract void withdraw(); }
+interface Payment { void pay(); }
+
+=========================
+4️⃣ COMBINED EXAMPLE (BANK + PAYMENT)
+=========================
+
+abstract class BankAccount {
+    double balance;
+    BankAccount(double b) { balance=b; }
+    abstract void withdraw(double amt) throws Exception;
+    void deposit(double amt) { balance+=amt; System.out.println(balance); }
+}
+interface Payment { void pay(double amt); default void success(){ System.out.println("Done"); } }
+class CreditCard extends BankAccount implements Payment {
+    CreditCard(double b){ super(b); }
+    void withdraw(double a) throws Exception { if(a>balance) throw new Exception("Insufficient"); balance-=a; }
+    public void pay(double a){ System.out.println("Paid "+a); }
+}
+CreditCard cc = new CreditCard(1000);
+try { cc.deposit(500); cc.withdraw(300); cc.pay(200); cc.success(); }
+catch(Exception e){ System.out.println(e.getMessage()); }
+
+=========================
+5️⃣ BEST PRACTICES
+=========================
+1. Prefer interfaces for flexibility and multiple inheritance.
+2. Use abstract classes for shared code.
+3. Always handle exceptions for robust code.
+4. Custom exceptions for business logic.
+5. Anonymous classes for short-term usage.
+6. Loose coupling → easier maintenance & scalability.
+
+=========================
+6️⃣ QUICK FLOW DIAGRAM (TEXTUAL)
+=========================
+[OOP Concepts] → [Abstract/Interface] → [Child Classes] → [Method Overrides] → [Anonymous Classes] → [Exception Handling] → [Runtime Flow]
+
+=========================
+END OF JAVA CHEAT SHEET
+=========================

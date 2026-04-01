@@ -1,0 +1,119 @@
+=========================
+JAVA KEYWORDS COMPLETE NOTES
+=========================
+
+Note:
+- Keywords are **reserved words in Java**.
+- Cannot be used as variable names, class names, or method names.
+- Each keyword has **specific purpose in program flow, OOP, exception handling, etc.**
+
+=========================
+1️⃣ BASIC KEYWORDS
+=========================
+
+| Keyword                       | Meaning & Usage                                     | Example                                        |
+|-------------------------------|---------------------------------------------------|-----------------------------------------------|
+| class                         | Define a class                                     | class Student { }                             |
+| interface                     | Define an interface                                | interface Payment { void pay(); }            |
+| public                        | Access modifier, accessible from anywhere         | public class Main { }                         |
+| private                       | Access modifier, accessible only within class     | private int age;                               |
+| protected                     | Access modifier, accessible in package & subclass | protected void display() { }                  |
+| static                        | Belongs to class, not object                      | static int count; static void info() { }      |
+| void                          | Method returns nothing                             | void show() { }                               |
+| int, double, char, boolean, byte, short, long, float | Primitive data types              | int age=20; double price=100.5;              |
+| new                           | Create new object                                  | Student s = new Student();                    |
+| return                        | Return value from method                           | int sum() { return 10; }                      |
+| this                          | Reference current object                            | this.age = age;                               |
+| super                         | Reference parent class                              | super.display();                              |
+| extends                       | Inherit from parent class                            | class Dog extends Animal { }                  |
+| implements                     | Implement interface                                 | class Upi implements Payment { }             |
+| package                       | Define package                                     | package com.example;                           |
+| import                        | Import classes/packages                             | import java.util.Scanner;                     |
+| final                         | Constant, cannot override/extend                   | final int MAX=100; final class A { }         |
+| abstract                      | Abstract class or method                           | abstract class Animal { abstract void sound(); } |
+| default                       | Default method in interface                         | default void info() { }                        |
+| enum                          | Define enumerated constants                         | enum Days { MON, TUE, WED }                  |
+| break                         | Exit loop/switch                                   | for(int i=0;i<10;i++){ if(i==5) break; }     |
+| continue                      | Skip current iteration                               | for(int i=0;i<5;i++){ if(i==2) continue; }   |
+| if                            | Conditional execution                               | if(a>0){ }                                    |
+| else                          | Alternate condition                                 | if(a>0){} else{}                              |
+| switch                        | Multi-branch selection                               | switch(day){ case 1: break; }                |
+| case                          | Case in switch                                     | case 1: break;                                |
+| default                       | Default case                                       | default: break;                               |
+| while                         | Loop                                               | while(i<10){ }                                |
+| do                            | Loop                                               | do{ } while(i<10);                             |
+| for                           | Loop                                               | for(int i=0;i<5;i++){ }                        |
+
+---
+
+=========================
+2️⃣ INTERMEDIATE KEYWORDS
+=========================
+
+| Keyword       | Meaning & Usage                               | Example                        |
+|---------------|-----------------------------------------------|--------------------------------|
+| try           | Begin exception block                         | try { }                        |
+| catch         | Handle exception                              | catch(Exception e) { }         |
+| finally       | Cleanup block, always executes               | finally { }                    |
+| throw         | Throw exception manually                      | throw new IOException();        |
+| throws        | Declare exception in method                   | void read() throws IOException { } |
+| synchronized  | Thread synchronization                         | synchronized void method() { } |
+| volatile      | Variable updated by multiple threads         | volatile int count;            |
+| transient     | Variable not serialized                       | transient int temp;            |
+| assert        | Debugging check                               | assert x>0:"Error";            |
+| instanceof    | Check object type                             | if(obj instanceof Dog){ }       |
+| goto          | Reserved, not used                             | —                              |
+| const         | Reserved, not used                             | —                              |
+
+---
+
+=========================
+3️⃣ ADVANCED / OOP KEYWORDS
+=========================
+
+| Keyword       | Meaning & Usage                               | Example                              |
+|---------------|-----------------------------------------------|--------------------------------------|
+| native        | Method implemented in another language (C/C++) | native void foo();                   |
+| strictfp      | Floating point precision                        | strictfp class Calc { }              |
+| interface     | Defines a contract, must implement methods     | interface Payment { void pay(); }    |
+| abstract      | Abstract class or method                        | abstract class Animal { abstract void sound(); } |
+| implements    | Implement interface                             | class Upi implements Payment { }    |
+| final         | Prevent inheritance or method override         | final class A { } final void display() { } |
+| static        | Class-level method or variable                  | static int count;                    |
+| this          | Current object reference                         | this.name = name;                    |
+| super         | Parent class reference                            | super.method();                     |
+| enum          | Enumerated constants                             | enum Days{MON,TUE}                   |
+
+---
+
+=========================
+4️⃣ SUGGESTIONS FOR LEARNING KEYWORDS
+=========================
+
+1. **Group keywords by purpose**:
+   - Data types → int, float, double, boolean…
+   - OOP → class, interface, extends, implements, abstract, final, super, this
+   - Flow control → if, else, switch, case, default, break, continue, for, while, do
+   - Exception → try, catch, throw, throws, finally
+   - Threads → synchronized, volatile, transient
+   - Miscellaneous → native, strictfp, enum, package, import, static
+
+2. **Practice examples**:
+   - Write a mini program using **all flow control keywords**.
+   - Write an **OOP program** using class, interface, abstract, extends, super, this.
+   - Write a **try-catch program** using throw and throws.
+   - Write a **thread-safe class** using synchronized and volatile.
+
+3. **Use mnemonic techniques**:
+   - Example: “**PETS CIFT**” → Package, Enum, This, Super, Class, Interface, Final, Try
+
+4. **Highlight differences**:
+   - abstract vs interface  
+   - throw vs throws  
+   - final vs finally  
+   - static vs instance members  
+
+5. **Combine with examples**:
+   - Always link a keyword to **real-world examples** (Bank, Payment, Student, Animal) for easier recall.
+
+---
