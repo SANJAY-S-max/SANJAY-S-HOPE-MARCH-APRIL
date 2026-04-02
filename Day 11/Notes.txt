@@ -1,0 +1,232 @@
+==========================
+Java Notes: Packages, Primitives, Objects, and Wrapper Classes
+==========================
+
+1. Packages in Java
+------------------
+Definition:
+A package is a namespace that organizes related classes and interfaces.
+
+Purpose:
+- Avoid name conflicts
+- Organize code
+- Control access
+- Reuse code easily
+
+Types of Packages:
+1. Built-in: java.util, java.lang, java.io
+2. User-defined: Custom packages created by the programmer
+
+Syntax:
+package mypackage; // define package at the top
+import mypackage.Hello; // use class from package
+
+Example:
+File: Hello.java
+package mypackage;
+public class Hello {
+    public void display() {
+        System.out.println("Hello from package!");
+    }
+}
+
+File: Main.java
+import mypackage.Hello;
+public class Main {
+    public static void main(String[] args) {
+        Hello obj = new Hello();
+        obj.display();
+    }
+}
+
+Key Points:
+- package keyword defines package
+- import keyword accesses classes from packages
+- Built-in example: import java.util.Scanner;
+
+--------------------------
+2. Primitive Data Types in Java
+--------------------------
+Definition:
+Primitives are basic data types that store simple values directly.
+
+Primitive Types:
+Primitive  | Size | Default Value
+byte       | 1 B  | 0
+short      | 2 B  | 0
+int        | 4 B  | 0
+long       | 8 B  | 0L
+float      | 4 B  | 0.0f
+double     | 8 B  | 0.0d
+char       | 2 B  | '\u0000'
+boolean    | 1 bit| false
+
+Example:
+int a = 10;
+double b = 20.5;
+char c = 'A';
+boolean flag = true;
+
+Memory:
+- Local primitive → Stack
+- Primitive inside object → Heap
+
+Example:
+public class Test {
+    int x = 5; // instance variable → Heap
+    public static void main(String[] args) {
+        int y = 10; // local variable → Stack
+    }
+}
+
+--------------------------
+3. Objects in Java
+--------------------------
+Definition:
+An object is an instance of a class, storing fields and methods.
+
+Example:
+class Person {
+    String name;
+    int age;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p = new Person();
+        p.name = "Alice";
+        p.age = 25;
+    }
+}
+
+Memory:
+- Reference p → Stack
+- Object fields (name, age) → Heap
+
+Primitive vs Object:
+
+Feature          | Primitive       | Object
+-----------------|----------------|-------------------
+Storage          | Direct value    | Reference → Data in Heap
+Memory location  | Stack/Heap      | Heap for data, stack for reference
+Methods          | None            | Can have methods
+Example          | int, double     | String, ArrayList, Person
+
+--------------------------
+4. Wrapper Classes in Java
+--------------------------
+Definition:
+A wrapper class wraps a primitive in an object, allowing primitives to behave like objects.
+
+Primitive → Wrapper Mapping:
+Primitive | Wrapper Class
+int       | Integer
+char      | Character
+double    | Double
+float     | Float
+boolean   | Boolean
+long      | Long
+short     | Short
+byte      | Byte
+
+Why Wrapper Classes?
+- Required in collections (ArrayList, HashMap)
+- Utility methods (parseInt(), toString())
+- Nullable numeric values
+- Autoboxing and unboxing support
+
+Example:
+int a = 10;           // primitive
+Integer b = 20;       // wrapper object
+
+--------------------------
+5. Autoboxing and Unboxing
+--------------------------
+Autoboxing: Primitive → Wrapper automatically
+Unboxing: Wrapper → Primitive automatically
+
+Example:
+int num = 10;
+Integer obj = num; // Autoboxing
+
+Integer x = 20;
+int y = x;        // Unboxing
+
+In expressions:
+Integer a = 10, b = 20;
+int sum = a + b; // unboxing automatically
+
+Memory:
+Stack                        Heap
+--------------------         --------------------
+a = 10 (primitive)           Integer object with value 10
+b -> reference --------------> Integer object with value 20
+sum = 30 (primitive)         (stored in stack)
+
+--------------------------
+6. Real-world Problems Using Wrapper Classes
+--------------------------
+1. Collections:
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10); // Autoboxing
+int val = list.get(0); // Unboxing
+
+2. Parsing user input:
+int num = Integer.parseInt("123");
+double d = Double.parseDouble("12.34");
+
+3. Nullable values:
+Integer num = null; // int cannot be null
+
+4. Optional arithmetic with null check:
+Integer a = 10, b = null;
+int sum = (a != null ? a : 0) + (b != null ? b : 0);
+
+--------------------------
+7. Wrapper Class Methods
+--------------------------
+
+A. Conversion Methods:
+Method           | Description               | Example
+parseInt(String) | String → int             | Integer.parseInt("123")
+parseDouble(String)| String → double         | Double.parseDouble("12.34")
+parseBoolean(String)| String → boolean       | Boolean.parseBoolean("true")
+valueOf(String)  | String → Wrapper object  | Integer.valueOf("123")
+valueOf(int)     | Primitive → Wrapper object | Integer.valueOf(100)
+toString()       | Wrapper → String         | Integer.valueOf(123).toString()
+
+B. Comparison Methods:
+Method           | Description               | Example
+compareTo(T)     | Compare two wrapper objects | a.compareTo(b)
+equals(Object)   | Check equality           | Integer.valueOf(10).equals(10)
+compare(T x, T y)| Static compare           | Integer.compare(10, 20)
+
+C. Min/Max/Sum Methods:
+Method           | Description               | Example
+MIN_VALUE        | Smallest value            | Integer.MIN_VALUE
+MAX_VALUE        | Largest value             | Integer.MAX_VALUE
+sum(a,b)         | Sum                       | Integer.sum(10,20)
+min(a,b)         | Smaller value             | Integer.min(10,20)
+max(a,b)         | Larger value              | Integer.max(10,20)
+
+D. Character Utility Methods:
+Method                 | Description             | Example
+isDigit(char)          | Check digit            | Character.isDigit('5')
+isLetter(char)         | Check letter           | Character.isLetter('A')
+isLetterOrDigit(char)  | Letter or digit        | Character.isLetterOrDigit('9')
+isUpperCase(char)      | Uppercase check        | Character.isUpperCase('A')
+isLowerCase(char)      | Lowercase check        | Character.isLowerCase('a')
+toUpperCase(char)      | Convert to uppercase   | Character.toUpperCase('b')
+toLowerCase(char)      | Convert to lowercase   | Character.toLowerCase('C')
+
+--------------------------
+8. Summary Table: Primitive vs Wrapper
+--------------------------
+Feature           | Primitive      | Wrapper Object
+-----------------|----------------|----------------
+Type              | Basic          | Object
+Memory            | Stack / Heap   | Heap (object), stack stores reference
+Null              | ❌ Not allowed | ✅ Allowed
+Methods           | ❌ None        | ✅ Many utility methods
+Collections       | ❌ Cannot store| ✅ Can store
+Autoboxing        | Not applicable | ✅ Supports autoboxing/unboxing

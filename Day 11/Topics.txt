@@ -1,0 +1,64 @@
+==========================
+Java Topics List
+==========================
+
+1. Packages in Java
+   - Definition and Purpose
+   - Built-in vs User-defined packages
+   - Syntax: package & import
+   - Example of package usage
+
+2. Primitive Data Types
+   - Definition
+   - Types: byte, short, int, long, float, double, char, boolean
+   - Default values
+   - Memory allocation (Stack vs Heap)
+   - Example declarations
+
+3. Objects in Java
+   - Definition of object
+   - Creating objects
+   - Memory structure (reference in stack, data in heap)
+   - Primitive vs Object comparison
+
+4. Wrapper Classes
+   - Definition and Purpose
+   - Primitive → Wrapper mapping
+   - Why wrapper classes are used
+   - Example usage
+
+5. Autoboxing and Unboxing
+   - Autoboxing: primitive → wrapper
+   - Unboxing: wrapper → primitive
+   - Examples in assignment and expressions
+   - Memory behavior
+
+6. Real-world Problems Using Wrapper Classes
+   - Collections (ArrayList, HashMap)
+   - Parsing user input (String → primitive)
+   - Nullable numeric values
+   - Optional arithmetic with null check
+   - Example scenarios
+
+7. Wrapper Class Methods
+   A. Conversion Methods
+      - parseInt(), parseDouble(), parseBoolean()
+      - valueOf(String), valueOf(int)
+      - toString()
+   B. Comparison Methods
+      - compareTo()
+      - equals()
+      - compare()
+   C. Min/Max/Sum Methods
+      - MIN_VALUE, MAX_VALUE
+      - sum(), min(), max()
+   D. Character Utility Methods
+      - isDigit(), isLetter(), isLetterOrDigit()
+      - isUpperCase(), isLowerCase()
+      - toUpperCase(), toLowerCase()
+
+8. Summary
+   - Primitive vs Wrapper Object Table
+   - Key differences in memory, methods, nullability, collections, autoboxing
+
+==========================
