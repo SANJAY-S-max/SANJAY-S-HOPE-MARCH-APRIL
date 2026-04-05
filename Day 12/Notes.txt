@@ -1,0 +1,228 @@
+Topic: Java Collection Framework (JCF)
+
+1. Definition:
+Java Collection Framework (JCF) is a set of classes and interfaces in Java that provides a unified architecture to store, manipulate, and process groups of objects dynamically.
+
+---
+
+2. Why Collections? (Need of JCF)
+
+Problems with Arrays:
+- Fixed size → must specify size at creation
+  Example: int[] arr = new int[5];
+- Cannot grow or shrink dynamically
+- Memory is static (allocated at compile/runtime initialization)
+- Difficult to perform operations like insertion, deletion, searching
+- No built-in methods for complex data handling
+
+Solution:
+- JCF provides dynamic memory allocation
+- Easy data manipulation using built-in methods
+
+---
+
+3. Key Concepts:
+
+- Dynamic memory allocation
+- Stores objects (not primitives directly → uses wrappers like Integer)
+- Provides reusable data structures
+- Part of java.util package
+
+---
+
+4. JCF Hierarchy (Corrected)
+
+Iterable (Interface)
+   |
+   → Collection (Interface)
+        |
+        |→ List (Interface)
+        |     |→ ArrayList (Class)
+        |     |→ LinkedList (Class)
+        |     |→ Vector (Class)
+        |
+        |→ Set (Interface)
+        |     |→ HashSet (Class)
+        |     |→ LinkedHashSet (Class)
+        |     |→ TreeSet (Class)
+        |
+        |→ Queue (Interface)
+              |→ PriorityQueue (Class)
+              |→ Deque (Interface)
+                    |→ ArrayDeque (Class)
+
+Map (Interface)  ❗ (Not part of Collection interface)
+   |
+   |→ HashMap
+   |→ LinkedHashMap
+   |→ TreeMap
+   |→ Hashtable
+
+---
+
+5. Syntax Examples:
+
+// ArrayList
+ArrayList<Integer> list = new ArrayList<>();
+
+// LinkedList
+LinkedList<Integer> list2 = new LinkedList<>();
+
+// HashSet
+HashSet<Integer> set = new HashSet<>();
+
+// HashMap
+HashMap<Integer, String> map = new HashMap<>();
+
+---
+
+6. Common Methods Used:
+
+For List:
+- add(E e)
+- get(int index)
+- remove(int index)
+- size()
+- contains(Object o)
+
+For Set:
+- add()
+- remove()
+- contains()
+
+For Map:
+- put(K key, V value)
+- get(Object key)
+- remove(Object key)
+- containsKey()
+
+---
+
+7. Example Code:
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        list.add(10);
+        list.add(20);
+        list.add(30);
+
+        System.out.println(list);
+        System.out.println(list.get(1));
+    }
+}
+
+---
+
+8. Output:
+[10, 20, 30]
+20
+
+---
+
+9. Memory Allocation of ArrayList (Important Concept)
+
+- Default capacity = 10
+- When full → capacity increases
+
+Formula:
+newCapacity = oldCapacity + (oldCapacity / 2)
+
+Example:
+10 → 15 → 22 → 33 ...
+
+- Happens internally using array resizing
+
+---
+
+10. LinkedList Internal Structure:
+
+Each element is stored in a node:
+
+class Node {
+    int data;
+    Node next;
+    Node prev;
+}
+
+Structure:
+NULL ← [prev | data | next] ⇄ [prev | data | next] → NULL
+
+- Doubly linked list
+- Stores address references
+
+---
+
+11. Real-World Usage:
+
+- ArrayList → Used in dynamic lists (e.g., user data, product lists)
+- LinkedList → Used in navigation systems, undo/redo operations
+- HashSet → Used for storing unique values (e.g., usernames)
+- HashMap → Used in databases, caching, key-value storage
+- Queue → Used in task scheduling, message queues
+
+---
+
+12. Important Points:
+
+- ArrayList is faster for searching
+- LinkedList is faster for insertion/deletion
+- Set does not allow duplicates
+- Map stores key-value pairs
+- TreeSet/TreeMap → sorted order
+
+---
+
+13. Common Mistakes:
+
+❌ Writing: int[] a = new int[]  → invalid
+✔ Correct: int[] a = new int[5];
+
+❌ Thinking Map is part of Collection
+✔ Map is separate hierarchy
+
+❌ Using primitives in collections
+✔ Use wrapper classes (Integer, Double)
+
+---
+
+14. Extra Notes (Deep Understanding):
+
+- ArrayList internally uses a dynamic array
+- LinkedList uses nodes with pointers
+- HashMap uses hashing (hashCode + equals)
+- TreeSet uses Red-Black Tree (self-balancing BST)
+
+---
+
+15. Interview Tips:
+
+Q1: Difference between ArrayList and LinkedList?
+→ ArrayList: fast access
+→ LinkedList: fast insertion/deletion
+
+Q2: Why Map is not part of Collection?
+→ Because it stores key-value pairs, not single elements
+
+Q3: Default size of ArrayList?
+→ 10
+
+Q4: How HashMap works internally?
+→ Uses hashing + buckets
+
+
+
+------------------------------------------------------------------------------------------------------
+
+Comparison of ArrayList and LinkedList:
+  Which is faster to access
+     -ArrayList is faster than LinkedList
+  Which getting an element which is faster
+     -arr.get(1)->faster
+     -List.get(1)->Lesser
+  which has high memory allocation
+     -ArrayList->More(High)
+     -LinkedList->Slightly less than your ArrayList
