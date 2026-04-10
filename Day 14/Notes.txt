@@ -1,0 +1,13 @@
+Map
+ -It is an interface
+ -What Map consist of?
+Map
+|->HashMap
+|->LinkedHash Map
+|->Tree Map
+
+HashMap
+   It is a class which holds a key and a value as a parameter
+
+LinkedHashMap
+ -it is linked to one and 

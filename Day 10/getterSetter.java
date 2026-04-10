@@ -7,7 +7,6 @@ class Name{
     String getName(){
         return this.name;
     }
-    
 }
 
 public class getterSetter{

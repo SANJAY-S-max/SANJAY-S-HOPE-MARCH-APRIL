@@ -1,0 +1,6 @@
+Set:
+ -Is set is an interface or class?
+    it is an interface which has
+             HashSet
+                |
+                

@@ -1,5 +1,5 @@
 import java.util.*;
-public class ArraayListImplementation {
+public class ArrayListImplementation {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> arrList = new ArrayList<>();      //interfaces = classes
