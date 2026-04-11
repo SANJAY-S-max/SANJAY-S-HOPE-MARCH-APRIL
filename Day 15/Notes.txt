@@ -1,0 +1,4 @@
+iterator
+|->Iterator means traversing th egiven collections
+|->we will utilize the iterator mostly in collections
+|->To traverse efficiently we are going 
