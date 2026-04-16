@@ -1,0 +1,9 @@
+File handing present under which package.
+        -> java.io.*;
+
+for handing files we need
+    1.FIle -> which is used for creating / close / deleting
+    2.FileReader -> Reading from the files
+    3.File Writer -> Writing to the files
+    4.Buffered Reader -> It is as same as file reader but it move efficient
+    5.Bufferent writer -> It is as same as file writer but it is more efficient

@@ -1,0 +1,2 @@
+1.Renaming()
+2.Copy content in file1 to file2
