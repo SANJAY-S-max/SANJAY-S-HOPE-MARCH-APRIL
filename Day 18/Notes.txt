@@ -1,0 +1,5 @@
+Differance between default vs static interface method:
+  -default method can be overriden where as your static methods can't be overriden
+  -default method is accessed via object where as your static method is accessed directly 
+  -default method can be called as object/class but static is called only as interface
+  
