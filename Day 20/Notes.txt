@@ -1,0 +1,6 @@
+What is JDBC
+    It is called as Java DataBase connector
+    It is an API not a DataBase
+    It is a DriverManager
+Arctitecture
+    JDBC -> Java -> Jar(Sql)-> DriverManager -> Data is stored & retrived (CRND) -> Java
