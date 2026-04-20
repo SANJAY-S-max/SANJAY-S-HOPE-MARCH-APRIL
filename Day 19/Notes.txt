@@ -1,0 +1,90 @@
+Streams -> API
+Life Cycle of Streams
+ Starting Actions -> {Intermediate Actions} -> Terminal Actions
+                                |->Optional
+
+DATA → FILTER → TRANSFORM → COLLECT/RESULT
+
+                ┌────────────────────┐
+                │   DATA SOURCE      │
+                │────────────────────│
+                │ List, Set, Array   │
+                │ Stream.of()        │
+                │ Stream.iterate()   │
+                │ Stream.generate()  │
+                └─────────┬──────────┘
+                          │
+                          ▼
+                ┌────────────────────┐
+                │   STREAM CREATED   │
+                │  .stream()         │
+                └─────────┬──────────┘
+                          │
+                          ▼
+        ┌──────────────────────────────────────────┐
+        │     INTERMEDIATE OPERATIONS (LAZY)       │
+        │------------------------------------------│
+        │ filter()        → remove elements        │
+        │ map()           → transform              │
+        │ flatMap()       → flatten                │
+        │ distinct()      → remove duplicates      │
+        │ sorted()        → sort                   │
+        │ limit()         → take first N           │
+        │ skip()          → skip first N           │
+        │ peek()          → debug/log              │
+        │ takeWhile()     → take until false       │
+        │ dropWhile()     → drop until false       │
+        └─────────┬────────────────────────────────┘
+                  │
+                  │ (NO execution yet ⚠️)
+                  ▼
+        ┌──────────────────────────────────────────┐
+        │        TERMINAL OPERATIONS               │
+        │------------------------------------------│
+        │ forEach()     → print/use                │
+        │ collect()     → List/Map/Set             │
+        │ count()       → number                   │
+        │ reduce()      → single value             │
+        │ findFirst()   → first element            │
+        │ findAny()     → any element              │
+        │ anyMatch()    → boolean                  │
+        │ allMatch()    → boolean                  │
+        │ noneMatch()   → boolean                  │
+        │ min()/max()   → smallest/largest         │
+        └─────────┬────────────────────────────────┘
+                  │
+                  ▼
+        ┌────────────────────┐
+        │   FINAL RESULT     │
+        │────────────────────│
+        │ value / list / map │
+        └────────────────────┘
+-----------------------------------------------------------------
+
+map(x -> x.toUpperCase())
+        ↓
+map(String::toUpperCase)
+
+-----------------------------------------------------------------
+
+Stream: [1, 2, 3, 4]
+
+reduce(0, (a, b) -> a + b)
+
+Step 1: a=0, b=1 → 1
+Step 2: a=1, b=2 → 3
+Step 3: a=3, b=3 → 6
+Step 4: a=6, b=4 → 10
+
+Final Result = 10
+
+-----------------------------------------------------------------
+
+List.of(1,2,3,4,5).stream()
+    .filter(x -> x > 2)      // [3,4,5]
+    .map(x -> x * 10)        // [30,40,50]
+    .limit(2)                // [30,40]
+    .forEach(System.out::println); // OUTPUT
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
