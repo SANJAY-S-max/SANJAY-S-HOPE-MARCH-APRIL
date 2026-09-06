@@ -1,0 +1,70 @@
+# =========================
+# 🚀 PRO / ADVANCED GIT COMMANDS
+# =========================
+
+# =========================
+# 🔄 REBASE & HISTORY EDITING
+# =========================
+git rebase -i HEAD~n                    # interactively rebase last n commits
+git commit --fixup <commit>             # mark a commit for autosquash
+git rebase -i --autosquash              # rebase and automatically squash fixups
+git reflog                              # view all HEAD movements for recovery
+
+# =========================
+# 🧩 PATCHES & CHERRY-PICK
+# =========================
+git cherry <upstream> <branch>          # see commits in branch but not in upstream
+git format-patch <commit>               # export commits as patch files
+git cherry-pick -n <commit>             # cherry-pick without committing
+git cherry-pick --abort                  # cancel cherry-pick in conflict
+
+# =========================
+# 🌐 REMOTE TRACKING & SYNC
+# =========================
+git remote set-url origin <url>         # change remote URL
+git fetch --prune                        # remove deleted remote branches locally
+git pull --rebase                        # pull changes and rebase instead of merge
+
+# =========================
+# ⚔️ CONFLICT RESOLUTION
+# =========================
+git mergetool                            # open merge tool for conflicts
+git rerere                               # reuse recorded conflict resolutions
+git merge --abort                        # cancel merge in conflict
+
+# =========================
+# 🔍 LOGS & HISTORY EXPLORATION
+# =========================
+git shortlog -s -n                        # summary of commits per author
+git describe --tags                        # describe commit in terms of nearest tag
+git log --stat                             # show changed files per commit
+git log -p                                 # show patch per commit
+git log --graph --all --decorate          # visualize branch graph with refs
+
+# =========================
+# 🧪 DIFF / COMPARISONS
+# =========================
+git diff <branch1>..<branch2>             # compare two branches
+git diff --name-only                       # show only changed file names
+git diff --word-diff                        # word-by-word diff
+
+# =========================
+# 🔗 SUBMODULES
+# =========================
+git submodule add <url> [path]             # add submodule
+git submodule init                         # initialize submodules
+git submodule update                       # update submodules
+git submodule update --init --recursive    # init + update recursively
+
+# =========================
+# 🌲 SPARSE CHECKOUT (LARGE REPOS)
+# =========================
+git sparse-checkout init --cone            # enable sparse checkout
+git sparse-checkout set <folder>          # select specific folders to checkout
+
+# =========================
+# 🔧 MISC / HELPFUL
+# =========================
+git clean -n                               # preview untracked files to delete
+git reflog expire --expire=now --all       # clean reflog entries
+git gc                                     # garbage collect and optimize repo

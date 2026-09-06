@@ -1,0 +1,168 @@
+# =========================
+# 🚀 BASIC SETUP / CONFIGURATION
+# =========================
+git config --global user.name "Your Name"        # set your Git username
+git config --global user.email "you@email.com"  # set your Git email
+git config --global color.ui auto               # enable colored output
+git config --list                               # view all configuration
+git help config                                 # detailed help about config
+git version                                     # check Git version
+
+# =========================
+# 📁 CREATE / CLONE REPO
+# =========================
+git init                                        # initialize new local repository
+git clone <repo-url>                            # clone repo from GitHub
+git clone -b <branch> <repo-url>               # clone specific branch
+git clone --depth 1 <repo-url>                 # shallow clone, latest commit only
+git help clone                                  # detailed help for clone
+
+# =========================
+# 📂 FILE TRACKING
+# =========================
+git status                                      # show current status of repo
+git add <file>                                  # stage a specific file
+git add .                                       # stage all files in folder
+git add -p                                      # interactively stage changes
+git restore <file>                              # discard changes in file (unstaged)
+git restore --staged <file>                     # unstage file
+git rm <file>                                   # remove file and stage deletion
+git rm --cached <file>                          # remove file from index but keep locally
+git mv <old> <new>                              # rename/move file
+git ls-files                                    # show tracked files
+git diff                                        # show unstaged changes
+git diff --staged                               # show staged changes
+
+# =========================
+# 💾 COMMITS
+# =========================
+git commit -m "message"                         # commit staged changes
+git commit -am "message"                        # stage + commit tracked files
+git commit --amend -m "new message"            # modify last commit message
+git log                                         # show commit history
+git log --oneline                               # short commit history
+git log --graph --oneline --all                 # visual graph of commits
+git show <commit>                               # view a specific commit
+git revert <commit>                             # create a new commit that undoes a commit
+git reset --soft <commit>                       # reset HEAD to commit, keep changes staged
+git reset --mixed <commit>                      # reset HEAD, keep changes unstaged
+git reset --hard <commit>                        # reset HEAD and discard all changes
+git cherry-pick <commit>                        # apply a commit from another branch
+
+# =========================
+# 🌿 BRANCHING
+# =========================
+git branch                                       # list local branches
+git branch -r                                    # list remote branches
+git branch <branch-name>                         # create a new branch
+git checkout <branch-name>                       # switch to a branch
+git checkout -b <branch-name>                    # create + switch branch
+git switch <branch-name>                         # modern switch command
+git switch -c <branch-name>                      # create + switch (modern)
+git branch -d <branch-name>                      # delete branch safely
+git branch -D <branch-name>                      # force delete branch
+git branch --merged                               # list merged branches
+git branch --no-merged                            # list unmerged branches
+git merge <branch>                                # merge branch into current
+git merge --no-ff <branch>                        # merge branch with a merge commit
+git rebase <branch>                               # move current branch commits on top of branch
+git rebase -i <commit>                            # interactive rebase
+
+# =========================
+# 🌐 REMOTES
+# =========================
+git remote                                       # list remotes
+git remote -v                                    # show remote URLs
+git remote add <name> <url>                      # add remote
+git remote remove <name>                         # remove remote
+git remote rename <old> <new>                    # rename remote
+git fetch                                        # fetch changes from remote
+git fetch <remote>                               # fetch from specific remote
+git fetch --all                                  # fetch all remotes
+git pull                                         # fetch + merge changes
+git pull <remote> <branch>                       # pull specific branch
+git push                                         # push current branch
+git push <remote> <branch>                       # push specific branch
+git push -u <remote> <branch>                    # push + set upstream
+git push --all <remote>                          # push all branches
+git push --tags <remote>                         # push all tags
+git push --force <remote> <branch>               # force push branch (danger!)
+
+# =========================
+# 🍴 FORK & UPSTREAM
+# =========================
+git remote add upstream <original-repo-url>      # link original repo as upstream
+git fetch upstream                               # fetch upstream changes
+git merge upstream/main                           # merge upstream main into your branch
+git pull upstream main                            # pull upstream main changes
+git rebase upstream/main                          # rebase your branch on upstream main
+
+# =========================
+# 🧹 CLEAN / STASH
+# =========================
+git stash                                        # save temporary changes
+git stash save "message"                         # stash with message
+git stash list                                   # list stashes
+git stash pop                                    # apply last stash
+git stash apply <stash>                          # apply specific stash
+git stash drop <stash>                           # delete stash
+git clean -fd                                     # remove untracked files/folders
+
+# =========================
+# 🏷️ TAGS
+# =========================
+git tag                                          # list tags
+git tag <tagname>                                # create tag
+git tag -a <tagname> -m "message"               # create annotated tag
+git show <tagname>                               # show tag info
+git push origin <tagname>                         # push tag to remote
+git push origin --tags                            # push all tags
+
+# =========================
+# 🔍 SEARCH / LOGS / DIFFERENCES
+# =========================
+git log --grep="keyword"                         # search commit messages
+git log --author="Name"                          # search by author
+git log <file>                                   # log for a file
+git diff <commit1> <commit2>                     # diff between commits
+git blame <file>                                 # see line-by-line history
+
+# =========================
+# 🔄 REVERT / RESET / RECOVERY
+# =========================
+git reset file.txt                               # unstage file
+git reset --hard                                 # delete all changes ⚠️
+git revert <commit-id>                           # undo commit safely
+git reflog                                       # show history of HEAD movements
+git checkout <commit>                             # go to commit (detached HEAD)
+
+# =========================
+# 🔥 DETACHED HEAD FIX
+# =========================
+git checkout main                                # return to branch
+
+# =========================
+# 🚀 FULL WORKFLOW
+# =========================
+git clone <repo-url>                             # clone project
+cd project
+git checkout -b feature                          # create branch
+git add .                                        # stage
+git commit -m "added feature"                    # commit
+git push origin feature                          # push branch
+# then create Pull Request on GitHub
+
+# =========================
+# 🧠 MOST USED COMMANDS
+# =========================
+git status
+git add .
+git commit -m "msg"
+git push
+git pull
+git checkout -b branch
+git merge branch
+git branch -d branch
+git log --oneline
+git stash
+git fetch
